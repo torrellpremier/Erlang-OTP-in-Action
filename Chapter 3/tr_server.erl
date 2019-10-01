@@ -11,7 +11,7 @@
 -behaviour(gen_server).
 
 %% API
--export([]).
+-export([start_link/0, start_link/1, get_count/0, stop/0]).
 
 %% gen_server callbacks
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2,
