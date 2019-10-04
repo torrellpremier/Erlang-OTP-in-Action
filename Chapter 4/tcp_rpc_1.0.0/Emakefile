@@ -1,0 +1,4 @@
+% To compile the source files and place them in ebin
+{"src/*", [debug_info,
+  {i, "include/*"},
+  {outdir, "ebin"}]}.

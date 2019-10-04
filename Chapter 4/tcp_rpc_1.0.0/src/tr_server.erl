@@ -37,7 +37,7 @@
 %% @end
 %%%----------------------------------------------------------------------------
 start_link(Port) ->
-  gen_server:start_link({local, ?SERVER}, ?MODULE, [Port], []).
+  gen_server:start_link({local, ?MODULE}, ?MODULE, [Port], []).
 
 %% @spec start_link() -> {ok, Pid}
 %% @doc Calls 'start_link(Port)' using the default port
@@ -52,7 +52,7 @@ start_link() ->
 %% @end
 %%%----------------------------------------------------------------------------
 get_count() ->
-  gen_server:call(?SERVER, get_count).
+  gen_server:call(?MODULE, get_count).
 
 %%%----------------------------------------------------------------------------
 %% @doc Stops the server
@@ -60,7 +60,7 @@ get_count() ->
 %% @end
 %%%----------------------------------------------------------------------------
 stop() ->
-  gen_server:cast(?SERVER, stop).
+  gen_server:cast(?MODULE, stop).
 
 %%%============================================================================
 %%% gen_server callbacks
@@ -76,7 +76,8 @@ init([Port]) ->
 
 
 handle_call(get_count, _From, State) ->
-  {reply, {ok, State#state.request_count}, State}.;
+  io:format("Yo~n"),
+  {reply, {ok, State#state.request_count}, State}.
 
 handle_cast(stop, State) ->
   {stop, normal, State}.
